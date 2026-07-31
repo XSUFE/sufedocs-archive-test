@@ -25,10 +25,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v7
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.sha }}
+          allow-unsafe-pr-checkout: true
+          persist-credentials: false
 
       - name: Show log
         run: git log -5
